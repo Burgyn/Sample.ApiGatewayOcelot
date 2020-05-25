@@ -4,10 +4,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Sample.Basket.Domain;
-using Sample.Basket.Infrastructure;
+using Sample.Ordering.Domain;
+using Sample.Ordering.Infrastructure;
 
-namespace Sample.Basket
+namespace Sample.Users
 {
     public class Startup
     {
@@ -23,7 +23,7 @@ namespace Sample.Basket
         {
             services.AddSwaggerDocumentation(Configuration);
 
-            services.AddSingleton<IBasketRepository, DummyRepository>();
+            services.AddSingleton<IOrderRepository, DummyRepository>();
             services.AddControllers();
         }
 

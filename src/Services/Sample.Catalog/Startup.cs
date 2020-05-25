@@ -7,7 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Sample.Catalog.Domain;
 using Sample.Catalog.Infrastructure;
 
-namespace Sample.Users
+namespace Sample.Catalog
 {
     public class Startup
     {
