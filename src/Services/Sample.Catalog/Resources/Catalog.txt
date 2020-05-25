@@ -1,0 +1,38 @@
+[
+  {
+    "Id": 1,
+    "Name": "Ausdom AW615 FullHD",
+    "Description": "Ausdom AW615 FullHD",
+    "Price": 12.6
+  },
+  {
+    "Id": 2,
+    "Name": "Trust SKETCH SILENT",
+    "Description": "Trust SKETCH SILENT",
+    "Price": 15.9
+  },
+  {
+    "Id": 3,
+    "Name": "Logitech Wireless Mouse M185 sivá",
+    "Description": "Logitech Wireless Mouse M185 sivá",
+    "Price": 17.5
+  },
+  {
+    "Id": 4,
+    "Name": "Rapoo MT750S Multi-mode",
+    "Description": "Rapoo MT750S Multi-mode",
+    "Price": 43.8
+  },
+  {
+    "Id": 5,
+    "Name": "Trust Yvi FX Wireless Mouse – pink",
+    "Description": "Trust Yvi FX Wireless Mouse – pink",
+    "Price": 11.9
+  },
+  {
+    "Id": 6,
+    "Name": "Trust Bigfoot Gel Mouse Pad èierna",
+    "Description": "Trust Bigfoot Gel Mouse Pad èierna",
+    "Price": 7.3
+  }
+]
