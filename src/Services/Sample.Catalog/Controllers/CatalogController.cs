@@ -33,26 +33,26 @@ namespace Sample.Catalog.Controllers
         /// <summary>
         /// Creates the specified product.
         /// </summary>
-        /// <param name="user">The user.</param>
+        /// <param name="product">The user.</param>
         [HttpPost]
-        public async Task<ActionResult> Create(Product user)
+        public async Task<ActionResult> Create(Product product)
         {
-            await _repository.CreateAsync(user);
+            await _repository.CreateAsync(product);
 
-            return Created(string.Empty, new { user.Id });
+            return Created(string.Empty, new { product.Id });
         }
 
         /// <summary>
         /// Update the specified product.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        /// <param name="user">The product.</param>
+        /// <param name="product">The product.</param>
         [HttpPut("{id}")]
-        public async Task<ActionResult> Update(int id, Product user)
+        public async Task<ActionResult> Update(int id, Product product)
         {
-            user.Id = id;
+            product.Id = id;
 
-            await _repository.UpdateAsync(user);
+            await _repository.UpdateAsync(product);
 
             return Ok();
         }
