@@ -1,0 +1,131 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/users",
+      "UpstreamPathTemplate": "/gateway/api/users",
+      "ServiceName": "users",
+      "SwaggerKey": "users"
+    },
+    {
+      "DownstreamPathTemplate": "/api/users/{everything}",
+      "UpstreamPathTemplate": "/gateway/api/users/{everything}",
+      "ServiceName": "users",
+      "SwaggerKey": "users"
+    },
+    {
+      "DownstreamPathTemplate": "/api/catalog",
+      "UpstreamPathTemplate": "/gateway/api/catalog/",
+      "ServiceName": "catalog",
+      "SwaggerKey": "catalog"
+    },
+    {
+      "DownstreamPathTemplate": "/api/catalog/{everything}",
+      "UpstreamPathTemplate": "/gateway/api/catalog/{everything}",
+      "ServiceName": "catalog",
+      "SwaggerKey": "catalog"
+    },
+    {
+      "DownstreamPathTemplate": "/api/orders",
+      "UpstreamPathTemplate": "/gateway/api/ordering",
+      "ServiceName": "ordering",
+      "SwaggerKey": "ordering"
+    },
+    {
+      "DownstreamPathTemplate": "/api/orders/{everything}",
+      "UpstreamPathTemplate": "/gateway/api/ordering/{everything}",
+      "ServiceName": "ordering",
+      "SwaggerKey": "ordering"
+    },
+    {
+      "DownstreamPathTemplate": "/api/basket",
+      "UpstreamPathTemplate": "/gateway/api/basket",
+      "ServiceName": "basket",
+    },
+    {
+      "DownstreamPathTemplate": "/api/basket/{everything}",
+      "UpstreamPathTemplate": "/gateway/api/basket/{everything}",
+      "ServiceName": "basket",
+      "SwaggerKey": "basket"
+    },
+    {
+      "DownstreamPathTemplate": "/{everything}",
+      "ServiceName": "petstore",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "UpstreamPathTemplate": "/gateway/api/petstore/{everything}",
+      "SwaggerKey": "petstore"
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "users",
+      "Config": [
+        {
+          "Name": "Users API",
+          "Version": "v1",
+          "Service": {
+            "Name": "users",
+            "Path": "/swagger/v1/swagger.json"
+          }
+        }
+      ]
+    },
+    {
+      "Key": "catalog",
+      "Config": [
+        {
+          "Name": "Catalog API",
+          "Version": "v1",
+          "Service": {
+            "Name": "catalog",
+            "Path": "/swagger/v1/swagger.json"
+          }
+        }
+      ]
+    },
+    {
+      "Key": "basket",
+      "Config": [
+        {
+          "Name": "Basket API",
+          "Version": "v1",
+          "Service": {
+            "Name": "basket",
+            "Path": "/swagger/v1/swagger.json"
+          }
+        }
+      ]
+    },
+    {
+      "Key": "ordering",
+      "Config": [
+        {
+          "Name": "Ordering API",
+          "Version": "v1",
+          "Service": {
+            "Name": "ordering",
+            "Path": "/swagger/v1/swagger.json"
+          }
+        }
+      ]
+    },
+    {
+      "Key": "petstore",
+      "Config": [
+        {
+          "Name": "PetStore API",
+          "Version": "v1",
+          "Service": {
+            "Name": "petstore",
+            "Path": "/swagger/swagger.json"
+          }
+        }
+      ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "ServiceDiscoveryProvider": {
+      "Type": "AppConfiguration",
+      "PollingIntervalSeconds": 1000
+    }
+  }
+}

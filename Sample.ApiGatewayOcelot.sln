@@ -20,6 +20,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.PetStore", "src\Services\Sample.PetStore\Sample.PetStore.csproj", "{5E3C5EE5-1370-41D3-86D8-5552FEC6D072}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateways", "ApiGateways", "{0C0BB69A-E978-41C7-BD72-2CC342577A2C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.ApiGateway", "src\Gateways\Sample.ApiGateway\Sample.ApiGateway.csproj", "{9423C703-389F-41CF-8C15-1030E2D525AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +50,10 @@ Global
 		{5E3C5EE5-1370-41D3-86D8-5552FEC6D072}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E3C5EE5-1370-41D3-86D8-5552FEC6D072}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E3C5EE5-1370-41D3-86D8-5552FEC6D072}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9423C703-389F-41CF-8C15-1030E2D525AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9423C703-389F-41CF-8C15-1030E2D525AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9423C703-389F-41CF-8C15-1030E2D525AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9423C703-389F-41CF-8C15-1030E2D525AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +64,7 @@ Global
 		{DAA0E965-2B2C-49BB-BDE3-7E8A3F4067BB} = {F2ACD9BD-1185-4376-893F-6AA109DB7BA4}
 		{AF67F399-1BFA-43CF-AFA1-5EA386AEF5CE} = {F2ACD9BD-1185-4376-893F-6AA109DB7BA4}
 		{5E3C5EE5-1370-41D3-86D8-5552FEC6D072} = {F2ACD9BD-1185-4376-893F-6AA109DB7BA4}
+		{9423C703-389F-41CF-8C15-1030E2D525AB} = {0C0BB69A-E978-41C7-BD72-2CC342577A2C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AE53AD29-5F72-4694-8CE7-936715835F19}
