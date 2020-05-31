@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using MMLib.Ocelot.Provider.AppConfiguration;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using Sample.ApiGateway.Aggregators;
 
 namespace Sample.ApiGateway
 {
@@ -30,6 +31,7 @@ namespace Sample.ApiGateway
         {
             services.AddControllers();
             services.AddOcelot()
+                .AddSingletonDefinedAggregator<BasketAggregator>()
                 .AddAppConfiguration();
             services.AddSwaggerForOcelot(Configuration);
         }

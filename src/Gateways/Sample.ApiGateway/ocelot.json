@@ -10,7 +10,8 @@
       "DownstreamPathTemplate": "/api/users/{everything}",
       "UpstreamPathTemplate": "/gateway/api/users/{everything}",
       "ServiceName": "users",
-      "SwaggerKey": "users"
+      "SwaggerKey": "users",
+      "Key": "users"
     },
     {
       "DownstreamPathTemplate": "/api/catalog",
@@ -40,12 +41,14 @@
       "DownstreamPathTemplate": "/api/basket",
       "UpstreamPathTemplate": "/gateway/api/basket",
       "ServiceName": "basket",
+      "SwaggerKey": "basket"
     },
     {
       "DownstreamPathTemplate": "/api/basket/{everything}",
       "UpstreamPathTemplate": "/gateway/api/basket/{everything}",
       "ServiceName": "basket",
-      "SwaggerKey": "basket"
+      "SwaggerKey": "basket",
+      "Key": "basket"
     },
     {
       "DownstreamPathTemplate": "/{everything}",
@@ -53,6 +56,23 @@
       "UpstreamHttpMethod": [ "Get", "Post" ],
       "UpstreamPathTemplate": "/gateway/api/petstore/{everything}",
       "SwaggerKey": "petstore"
+    }
+  ],
+  "Aggregates": [
+    {
+      "RouteKeys": [
+        "users",
+        "basket"
+      ],
+      "UpstreamPathTemplate": "/gateway/api/basketwithuser/{everything}"
+    },
+    {
+      "RouteKeys": [
+        "users",
+        "basket"
+      ],
+      "Aggregator": "BasketAggregator",
+      "UpstreamPathTemplate": "/gateway/api/basketwithusercustom/{everything}"
     }
   ],
   "SwaggerEndPoints": [
