@@ -9,25 +9,27 @@ namespace Sample.Ordering.Infrastructure
 {
     public class DummyRepository : IOrderRepository
     {
-        private Dictionary<int, Domain.Order> _users;
+        private Dictionary<int, Domain.Order> _orders;
 
         public DummyRepository()
         {
-            _users = JsonSerializer
+            _orders = JsonSerializer
                 .Deserialize<IEnumerable<Domain.Order>>(Properties.Resources.Orders)
                 .ToDictionary(p => p.Id, p => p);
         }
 
-        public Task CreateAsync(Domain.Order user)
+        public Task CreateAsync(Domain.Order order)
         {
-            _users.Add(user.BuyerId, user);
+            var id = _orders.Keys.Max() + 1;
+            order.Id = id;
+            _orders.Add(order.Id, order);
 
             return Task.CompletedTask;
         }
 
-        public Domain.Order Get(int id) => _users[id];
+        public Domain.Order Get(int id) => _orders[id];
 
         public IEnumerable<Domain.Order> GetAll(int buyerId)
-            => _users.Values.Where(p=> p.BuyerId == buyerId);
+            => _orders.Values.Where(p=> p.BuyerId == buyerId);
     }
 }

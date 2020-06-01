@@ -10,8 +10,14 @@
       "DownstreamPathTemplate": "/api/users/{everything}",
       "UpstreamPathTemplate": "/gateway/api/users/{everything}",
       "ServiceName": "users",
+      "SwaggerKey": "users"
+    },
+    {
+      "DownstreamPathTemplate": "/api/users/{id}",
+      "UpstreamPathTemplate": "/gateway/api/users/{id}",
+      "ServiceName": "users",
       "SwaggerKey": "users",
-      "Key": "users"
+      "Key": "user"
     },
     {
       "DownstreamPathTemplate": "/api/catalog",
@@ -51,24 +57,36 @@
       "Key": "basket"
     },
     {
-      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamPathTemplate": "/v2/pet/findByStatus",
       "ServiceName": "petstore",
-      "UpstreamHttpMethod": [ "Get", "Post" ],
-      "UpstreamPathTemplate": "/gateway/api/petstore/{everything}",
+      "UpstreamPathTemplate": "/gateway/api/petstore/pet/findByStatus",
+      "SwaggerKey": "petstore"
+    },
+    {
+      "DownstreamPathTemplate": "/v2/store/{everything}",
+      "ServiceName": "petstore",
+      "UpstreamPathTemplate": "/gateway/api/petstore/stores/{everything}",
+      "SwaggerKey": "petstore"
+    },
+    {
+      "DownstreamPathTemplate": "/v2/user/{everything}",
+      "ServiceName": "petstore",
+      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamPathTemplate": "/gateway/api/petstore/user/{everything}",
       "SwaggerKey": "petstore"
     }
   ],
   "Aggregates": [
     {
       "RouteKeys": [
-        "users",
+        "user",
         "basket"
       ],
       "UpstreamPathTemplate": "/gateway/api/basketwithuser/{everything}"
     },
     {
       "RouteKeys": [
-        "users",
+        "user",
         "basket"
       ],
       "Aggregator": "BasketAggregator",
@@ -137,6 +155,20 @@
           "Service": {
             "Name": "petstore",
             "Path": "/swagger/swagger.json"
+          }
+        }
+      ]
+    },
+    {
+      "Key": "gateway",
+      "TransformByOcelotConfig": false,
+      "Config": [
+        {
+          "Name": "gateway",
+          "Version": "v1",
+          "Service": {
+            "Name": "gateway",
+            "Path": "/swagger/v1/swagger.json"
           }
         }
       ]

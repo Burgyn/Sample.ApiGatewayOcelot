@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Sample.Users.Domain;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -7,6 +8,10 @@ namespace Sample.Users.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ValidationProblemDetails))]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public class UsersController : ControllerBase
     {
         private readonly IUsersRepository _repository;
@@ -20,6 +25,7 @@ namespace Sample.Users.Controllers
         /// Gets all users.
         /// </summary>
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<User>))]
         public IEnumerable<User> Get() => _repository.GetAll();
 
         /// <summary>
@@ -28,6 +34,8 @@ namespace Sample.Users.Controllers
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(User))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public User Get(int id) => _repository.Get(id);
 
         /// <summary>
@@ -35,6 +43,7 @@ namespace Sample.Users.Controllers
         /// </summary>
         /// <param name="user">The user.</param>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<ActionResult> Create(User user)
         {
             await _repository.CreateAsync(user);
@@ -48,6 +57,8 @@ namespace Sample.Users.Controllers
         /// <param name="id">The identifier.</param>
         /// <param name="user">The user.</param>
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> Update(int id, User user)
         {
             user.Id = id;
@@ -63,6 +74,8 @@ namespace Sample.Users.Controllers
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> Delete(int id)
         {
             await _repository.DeleteAsync(id);

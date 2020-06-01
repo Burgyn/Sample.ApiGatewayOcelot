@@ -9,42 +9,42 @@ namespace Sample.Catalog.Infrastructure
 {
     public class DummyRepository : ICatalogRepository
     {
-        private Dictionary<int, Product> _users;
+        private Dictionary<int, Product> _products;
 
         public DummyRepository()
         {
-            _users = JsonSerializer
+            _products = JsonSerializer
                 .Deserialize<IEnumerable<Product>>(Properties.Resources.Catalog)
                 .ToDictionary(p => p.Id, p => p);
         }
 
-        public Task CreateAsync(Product user)
+        public Task CreateAsync(Product product)
         {
-            var id = _users.Keys.Max() + 1;
-            user.Id = id;
+            var id = _products.Keys.Max() + 1;
+            product.Id = id;
 
-            _users.Add(id, user);
+            _products.Add(id, product);
 
             return Task.CompletedTask;
         }
 
         public Task DeleteAsync(int id)
         {
-            _users.Remove(id);
+            _products.Remove(id);
 
             return Task.CompletedTask;
         }
 
-        public Task UpdateAsync(Product user)
+        public Task UpdateAsync(Product product)
         {
-            _users[user.Id] = user;
+            _products[product.Id] = product;
 
             return Task.CompletedTask;
         }
 
-        public Product Get(int id) => _users[id];
+        public Product Get(int id) => _products[id];
 
         public IEnumerable<Product> GetAll()
-            => _users.Values;
+            => _products.Values;
     }
 }

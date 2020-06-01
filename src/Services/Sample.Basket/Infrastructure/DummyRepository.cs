@@ -9,39 +9,39 @@ namespace Sample.Basket.Infrastructure
 {
     public class DummyRepository : IBasketRepository
     {
-        private Dictionary<int, Domain.Basket> _users;
+        private Dictionary<int, Domain.Basket> _baskets;
 
         public DummyRepository()
         {
-            _users = JsonSerializer
+            _baskets = JsonSerializer
                 .Deserialize<IEnumerable<Domain.Basket>>(Properties.Resources.Baskets)
                 .ToDictionary(p => p.BuyerId, p => p);
         }
 
-        public Task CreateAsync(Domain.Basket user)
+        public Task CreateAsync(Domain.Basket basket)
         {
-            _users.Add(user.BuyerId, user);
+            _baskets.Add(basket.BuyerId, basket);
 
             return Task.CompletedTask;
         }
 
         public Task DeleteAsync(int id)
         {
-            _users.Remove(id);
+            _baskets.Remove(id);
 
             return Task.CompletedTask;
         }
 
-        public Task UpdateAsync(Domain.Basket user)
+        public Task UpdateAsync(Domain.Basket basket)
         {
-            _users[user.BuyerId] = user;
+            _baskets[basket.BuyerId] = basket;
 
             return Task.CompletedTask;
         }
 
-        public Domain.Basket Get(int id) => _users[id];
+        public Domain.Basket Get(int id) => _baskets[id];
 
         public IEnumerable<Domain.Basket> GetAll()
-            => _users.Values;
+            => _baskets.Values;
     }
 }
