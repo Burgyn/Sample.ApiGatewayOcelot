@@ -10,12 +10,6 @@
       "DownstreamPathTemplate": "/api/users/{everything}",
       "UpstreamPathTemplate": "/gateway/api/users/{everything}",
       "ServiceName": "users",
-      "SwaggerKey": "users"
-    },
-    {
-      "DownstreamPathTemplate": "/api/users/{id}",
-      "UpstreamPathTemplate": "/gateway/api/users/{id}",
-      "ServiceName": "users",
       "SwaggerKey": "users",
       "Key": "user"
     },
