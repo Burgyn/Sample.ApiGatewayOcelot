@@ -7,8 +7,8 @@
       "SwaggerKey": "users"
     },
     {
-      "DownstreamPathTemplate": "/api/users/{everything}",
-      "UpstreamPathTemplate": "/gateway/api/users/{everything}",
+      "DownstreamPathTemplate": "/api/users/{id}",
+      "UpstreamPathTemplate": "/gateway/api/users/{id}",
       "ServiceName": "users",
       "SwaggerKey": "users",
       "Key": "user"
@@ -44,8 +44,11 @@
       "SwaggerKey": "basket"
     },
     {
-      "DownstreamPathTemplate": "/api/basket/{everything}",
-      "UpstreamPathTemplate": "/gateway/api/basket/{everything}",
+      "DownstreamPathTemplate": "/api/basket/{id}",
+      "UpstreamPathTemplate": "/gateway/api/basket/{id}",
+      "ParametersMap": {
+        "id": "buyerId"
+      },
       "ServiceName": "basket",
       "SwaggerKey": "basket",
       "Key": "basket"
@@ -76,15 +79,16 @@
         "user",
         "basket"
       ],
-      "UpstreamPathTemplate": "/gateway/api/basketwithuser/{everything}"
+      "UpstreamPathTemplate": "/gateway/api/basketwithuser/{id}"
     },
     {
       "RouteKeys": [
         "user",
         "basket"
       ],
+      "Description": "Testujem agregaciu <br /> a <strong>toto</strong> je popis priamo z ocelot.json.",
       "Aggregator": "BasketAggregator",
-      "UpstreamPathTemplate": "/gateway/api/basketwithusercustom/{everything}"
+      "UpstreamPathTemplate": "/gateway/api/basketwithusercustom/{id}"
     }
   ],
   "SwaggerEndPoints": [
@@ -149,20 +153,6 @@
           "Service": {
             "Name": "petstore",
             "Path": "/swagger/swagger.json"
-          }
-        }
-      ]
-    },
-    {
-      "Key": "gateway",
-      "TransformByOcelotConfig": false,
-      "Config": [
-        {
-          "Name": "gateway",
-          "Version": "v1",
-          "Service": {
-            "Name": "gateway",
-            "Path": "/swagger/v1/swagger.json"
           }
         }
       ]

@@ -1,16 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Kros.AspNetCore.ServiceDiscovery;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using MMLib.Ocelot.Provider.AppConfiguration;
 using Ocelot.DependencyInjection;
@@ -35,10 +28,28 @@ namespace Sample.ApiGateway
             services.AddOcelot()
                 .AddSingletonDefinedAggregator<BasketAggregator>()
                 .AddAppConfiguration();
-            services.AddSwaggerForOcelot(Configuration);
-            services.AddSwaggerGen(c =>
+            services.AddSwaggerForOcelot(Configuration,
+            (o) =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API Gateway", Version = "v1" });
+                o.GenerateDocsForAggregates = true;
+                o.GenerateDocsForGatewayItSelf = true;
+                o.AggregateDocsGeneratorPostProcess = (aggregateRoute, routesDocs, pathItemDoc, documentation) =>
+                {
+                    if (aggregateRoute.UpstreamPathTemplate == "/gateway/api/basketwithuser/{id}")
+                    {
+                        pathItemDoc.Operations[OperationType.Get].Parameters.Add(new OpenApiParameter()
+                        {
+                            Name = "customParameter",
+                            Description = "Demo only. This parameter doesn't realy exist.",
+                            Schema = new OpenApiSchema() { Type = "string"},
+                            In = ParameterLocation.Header
+                        });
+                    }
+                };
+            },
+            (o) =>
+            {
+                o.SwaggerDoc("v1", new OpenApiInfo() { Description = "dsfsd fsd fsdf", Version = "v1", Contact = new OpenApiContact() { Name = "ffff" } });
             });
             services.AddServiceDiscovery();
         }
@@ -52,7 +63,7 @@ namespace Sample.ApiGateway
             }
 
             app.UseSwagger();
-            app.UseSwaggerForOcelotUI(Configuration);
+            app.UseSwaggerForOcelotUI();
 
             app.UseRouting();
 
