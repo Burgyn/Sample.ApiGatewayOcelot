@@ -1,6 +1,4 @@
-﻿using System;
-using System.Net.Http;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Kros.AspNetCore.ServiceDiscovery;
 using Microsoft.AspNetCore.Mvc;
 using Flurl;

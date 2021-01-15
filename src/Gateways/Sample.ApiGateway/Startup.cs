@@ -33,24 +33,8 @@ namespace Sample.ApiGateway
             {
                 o.GenerateDocsForAggregates = true;
                 o.GenerateDocsForGatewayItSelf = true;
-                o.AggregateDocsGeneratorPostProcess = (aggregateRoute, routesDocs, pathItemDoc, documentation) =>
-                {
-                    if (aggregateRoute.UpstreamPathTemplate == "/gateway/api/basketwithuser/{id}")
-                    {
-                        pathItemDoc.Operations[OperationType.Get].Parameters.Add(new OpenApiParameter()
-                        {
-                            Name = "customParameter",
-                            Description = "Demo only. This parameter doesn't realy exist.",
-                            Schema = new OpenApiSchema() { Type = "string"},
-                            In = ParameterLocation.Header
-                        });
-                    }
-                };
-            },
-            (o) =>
-            {
-                o.SwaggerDoc("v1", new OpenApiInfo() { Description = "dsfsd fsd fsdf", Version = "v1", Contact = new OpenApiContact() { Name = "ffff" } });
             });
+
             services.AddServiceDiscovery();
         }
 
@@ -66,8 +50,6 @@ namespace Sample.ApiGateway
             app.UseSwaggerForOcelotUI();
 
             app.UseRouting();
-
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
