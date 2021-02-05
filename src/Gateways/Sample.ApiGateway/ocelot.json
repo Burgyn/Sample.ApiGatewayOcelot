@@ -86,7 +86,7 @@
         "user",
         "basket"
       ],
-      "Description": "Testujem agregaciu <br /> a <strong>toto</strong> je popis priamo z ocelot.json.",
+      "Description": "I'm testing aggregation <br /> and <strong> this </strong> is a description directly from ocelot.json.",
       "Aggregator": "BasketAggregator",
       "UpstreamPathTemplate": "/gateway/api/basketwithusercustom/{id}"
     }
